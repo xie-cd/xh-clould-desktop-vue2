@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Desktop />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Desktop from "./components/Desktop.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+  mounted() {
+    setTimeout(() => {
+      document.getElementById("loadbacksvg").style.opacity = 1;
+      document.getElementById("loadbackloading").style.opacity = 1;
+    }, 100);
+  },
   components: {
-    HelloWorld
-  }
-}
+    Desktop,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+ <style>
+* {
+  padding: 0px;
+  margin: 0px;
 }
+
 </style>

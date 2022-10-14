@@ -81,11 +81,11 @@
       <input-before class="bi bi-search"></input-before>
       <list>
         <p class="text">可用</p>
-        <a onclick="showwin('setting');hide_startmenu();">
+        <a @click="openSetting">
           <img src="/icons/setting.png" />
           <p>设置</p></a
         >
-        <a onclick="showwin('explorer');hide_startmenu();">
+        <a @click="openExplorer">
           <img src="/icons/explorer.png" />
           <p>文件资源管理器</p></a
         >
@@ -282,11 +282,35 @@
 </template>
 
 <script>
-
 export default {
-  components:{
-
-  }
+  mounted() {
+    //显示菜单
+    this.show();
+  },
+  components: {},
+  methods: {
+    show() {
+      $("#start-btn").addClass("show");
+      if ($("#search-win").hasClass("show")) {
+        $("#search-btn").removeClass("show");
+        $("#search-win").removeClass("show");
+        setTimeout(() => {
+          $("#search-win").removeClass("show-begin");
+        }, 200);
+      }
+      $("#start-menu").addClass("show-begin");
+      setTimeout(() => {
+        $("#start-menu").addClass("show");
+      }, 0); //非常神奇,我也不知道为什么去掉就不行
+    },
+    openSetting(){
+      this.$router.push({name:"setting"})
+      // showwin('setting');hide_startmenu();
+    },
+    openExplorer(){
+      this.$router.push({name:"explorer"})
+    }
+  },
 };
 </script>
 

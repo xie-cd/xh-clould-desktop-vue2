@@ -1,4 +1,4 @@
-import Desktop from '../components/Desktop.vue'
+// import DockBox from '../components/DockBox'
 import StartMenu from '../components/StartMenu'
 import SearchWin from '../components/SearchWin'
 import WindowExplorer from '../components/WindowExplorer'
@@ -8,19 +8,20 @@ const routes = [
     {
         path:'/',
         name:'desktop',
-        component:{
-            dockboxRv:Desktop
+        components:{
+            dockboxRv:()=>import("../components/DockBox")
         },
         meta: {
-            title: '桌面'
+            title: '任务栏'
         },
+
     },
     {
         path: '/start_menu',
         name: 'startMenu',
-        component: {
+        components: {
             default: StartMenu,
-            dockboxRv:Desktop
+            dockboxRv:()=>import("../components/DockBox")
         },
         meta: {
             title: '开始菜单'
@@ -30,7 +31,10 @@ const routes = [
     {
         path: '/search',
         name: 'search',
-        component: SearchWin,
+        components: {
+            default: SearchWin,
+            dockboxRv:()=>import("../components/DockBox")
+        },
         meta: {
             title: '搜索'
         },
@@ -38,7 +42,10 @@ const routes = [
     {
         path: '/explorer',
         name: 'explorer',
-        component: WindowExplorer,
+        components: {
+            default: WindowExplorer,
+            dockboxRv:()=>import("../components/DockBox")
+        },
         meta: {
             title: '资源管理器'
         },
@@ -46,11 +53,15 @@ const routes = [
     {
         path: '/setting',
         name: 'setting',
-        component: WindowSetting,
+        components: {
+            default: WindowSetting,
+            dockboxRv:()=>import("../components/DockBox")
+        },
         meta: {
             title: '设置'
         },
     }
+
 ]
 
 export default routes

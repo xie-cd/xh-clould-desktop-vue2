@@ -2,28 +2,7 @@
   <div id="dock-box">
     <!-- Dock(任务)栏 -->
     <div class="dock">
-      <a
-        class="dock-btn"
-        id="start-btn"
-        onclick="
-				if($('#start-menu').hasClass('show')){
-					hide_startmenu();
-				}
-				else{
-					$('#start-btn').addClass('show');
-					if($('#search-win').hasClass('show')){
-						$('#search-btn').removeClass('show');
-						$('#search-win').removeClass('show');
-						setTimeout(() => {
-							$('#search-win').removeClass('show-begin');
-						}, 200);
-					}
-					$('#start-menu').addClass('show-begin');
-					setTimeout(() => {
-						$('#start-menu').addClass('show');
-					}, 0);//非常神奇,我也不知道为什么去掉就不行
-				}"
-      >
+      <a class="dock-btn" id="start-btn" @click="startBtnClick">
         <!-- 开始按钮 -->
         <svg
           version="1.1"
@@ -128,27 +107,7 @@
           </g>
         </svg>
       </a>
-      <a
-        class="dock-btn"
-        id="search-btn"
-        onclick="
-			if($('#search-win').hasClass('show')){
-				$('#search-btn').removeClass('show');
-				$('#search-win').removeClass('show');
-				setTimeout(() => {
-					$('#search-win').removeClass('show-begin');
-				}, 200);
-			}
-			else{
-				$('#search-btn').addClass('show');
-				hide_startmenu();
-				$('#search-win').addClass('show-begin');
-				setTimeout(() => {
-					$('#search-win').addClass('show');
-				}, 0);
-				$('#search-input').focus();
-			}"
-      >
+      <a class="dock-btn" id="search-btn" @click="searchBtnClick">
         <svg
           width="26"
           height="26"
@@ -187,7 +146,7 @@
         </svg>
       </a>
     </div>
-    <div class="dock" id="taskbar" style="display: none" count="0"></div>
+    <!-- <div class="dock" id="taskbar" style="display: none" count="0"></div> -->
     <div
       class="dock about"
       onclick="if($(this).hasClass('show')){$(this).removeClass('show')}else{$(this).addClass('show')}"
@@ -240,7 +199,39 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    // 开始菜单
+    startBtnClick() {
+      if (this.$route.name != "startMenu"){
+                console.log($("#taskbar").attr("count"));
+                // if($("#taskbar").attr("count"))
+                this.$router.push({ name: "startMenu" });
+                
+      }
+      else {
+        hide_startmenu();
+        this.$router.push({ path: "/" });
+      }
+    },
+    //搜索
+    searchBtnClick() {
+      if (this.$route.name != "search"){
+         this.$router.push({ name: "search" });
+      }
+      else {
+        $("#search-btn").removeClass("show");
+        $("#search-win").removeClass("show");
+        setTimeout(() => {
+          $("#search-win").removeClass("show-begin");
+        }, 200);
+        this.$router.push({ path: "/" });
+      }
+
+    },
+    
+  },
+};
 </script>
 
 <style>

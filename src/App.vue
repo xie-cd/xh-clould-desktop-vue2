@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <router-view name="dockboxRv"></router-view>
+    <Desktop />
   </div>
 </template>
 
 <script>
+import Desktop from './components/Desktop.vue'
 export default {
   name: "App",
   mounted() {
-    this.$router.push({ name: "desktop" });
+    // this.$router.push({ name: "desktop" });
     // setTimeout(() => {
     //   document.getElementById("loadbacksvg").style.opacity = 1;
     //   document.getElementById("loadbackloading").style.opacity = 1;
     // }, 100);
   },
-  components: {},
+  components: {
+    Desktop,
+  },
   methods: {
     back_desktop(evt) {
       console.log(evt);

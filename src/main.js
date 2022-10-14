@@ -5,7 +5,8 @@ import router from './router'
 Vue.config.productionTip = false
 Vue.config.ignoredElements = [
   'input-before',
-  'list'
+  'list',
+  'icon'
 ]
 
 new Vue({

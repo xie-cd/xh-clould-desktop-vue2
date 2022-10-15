@@ -89,11 +89,11 @@
           <img src="/icons/explorer.png" />
           <p>文件资源管理器</p></a
         >
-        <a onclick="showwin('calc');hide_startmenu();">
+        <a @click="openCalc">
           <img src="/icons/calc.png" />
           <p>计算器</p></a
         >
-        <a onclick="showwin('about');hide_startmenu();">
+        <a @click="openAbout">
           <img src="/icons/about.png" />
           <p>关于Win12网页版</p></a
         >
@@ -303,12 +303,22 @@ export default {
         $("#start-menu").addClass("show");
       }, 0); //非常神奇,我也不知道为什么去掉就不行
     },
+    //打开设置
     openSetting(){
       this.$router.push({name:"setting"})
       // showwin('setting');hide_startmenu();
     },
+    //打开文件资源管理器
     openExplorer(){
       this.$router.push({name:"explorer"})
+    },
+    //打开计算器
+    openCalc(){
+      this.$router.push({name:"calc"})
+    },
+    //打开关于我们
+    openAbout(){
+      this.$router.push({name:"about"});
     }
   },
 };

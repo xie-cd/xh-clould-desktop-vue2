@@ -1,8 +1,3 @@
-// import DockBox from '../components/DockBox'
-import StartMenu from '../components/StartMenu'
-import SearchWin from '../components/SearchWin'
-import WindowExplorer from '../components/WindowExplorer'
-import WindowSetting from '../components/WindowSetting'
 
 const routes = [
     {
@@ -20,7 +15,7 @@ const routes = [
         path: '/start_menu',
         name: 'startMenu',
         components: {
-            default: StartMenu,
+            default: ()=>import("../components/StartMenu"),
             dockboxRv:()=>import("../components/DockBox")
         },
         meta: {
@@ -32,7 +27,7 @@ const routes = [
         path: '/search',
         name: 'search',
         components: {
-            default: SearchWin,
+            default: ()=>import("../components/SearchWin"),
             dockboxRv:()=>import("../components/DockBox")
         },
         meta: {
@@ -43,7 +38,7 @@ const routes = [
         path: '/explorer',
         name: 'explorer',
         components: {
-            default: WindowExplorer,
+            default: ()=>import("../components/WindowExplorer"),
             dockboxRv:()=>import("../components/DockBox")
         },
         meta: {
@@ -54,11 +49,33 @@ const routes = [
         path: '/setting',
         name: 'setting',
         components: {
-            default: WindowSetting,
+            default: ()=>import("../components/WindowSetting"),
             dockboxRv:()=>import("../components/DockBox")
         },
         meta: {
             title: '设置'
+        },
+    },
+    {
+        path: '/calc',
+        name: 'calc',
+        components: {
+            default: ()=>import("../components/Calc.vue"),
+            dockboxRv:()=>import("../components/DockBox")
+        },
+        meta: {
+            title: '关于'
+        },
+    },
+    {
+        path: '/about',
+        name: 'about',
+        components: {
+            default: ()=>import("../components/About.vue"),
+            dockboxRv:()=>import("../components/DockBox")
+        },
+        meta: {
+            title: '关于'
         },
     }
 

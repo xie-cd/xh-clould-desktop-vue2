@@ -122,10 +122,14 @@ export default {
     show() {
       showwin("explorer");
       hide_startmenu();
+      moveWindows();
     },
   },
 };
 </script>
 
 <style>
+.window.explorer.show-begin.show.notrans{
+  min-width: 756px;
+}
 </style>
